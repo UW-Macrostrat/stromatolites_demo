@@ -1,3 +1,4 @@
 psycopg2>=2.6.1
 pyyaml>=3.11
 tqdm>=1.0
+stop-words>=2015.2.23.1
