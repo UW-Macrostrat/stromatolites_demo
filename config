@@ -1,0 +1,17 @@
+# The name of the application (no spaces)
+app_name: strom
+
+# First and last name of the user
+user: Jon Husson
+
+# The NLP product to run the application against
+product: NLP352
+
+# How often the application should be run
+frequency: monthly
+
+# A list of terms used to subset the corpus
+terms: [stromatolite, stromatolitic, thrombolite, thrombolitic]
+
+# Alternatively, a list of dictionaries can be provided in place of a list of terms
+dictionaries: []

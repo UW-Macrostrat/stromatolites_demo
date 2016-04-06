@@ -1,0 +1,11 @@
+#==============================================================================
+# DEFINE TARGET VARIABLES
+#==============================================================================
+
+#each string in this list will define a regular expression search
+#   EXAMPLE:    [r'\b' + ooid + r'\b', r'\b' + ooids + r'\b']
+#               will find all instances of 'ooid' or 'ooids' bound by a non-alphanumeric character
+target_names = ['stromatol', 'thrombol']
+
+#an optional list of false hits
+bad_words = ['non-stromatolitic','nonstromatolitic','non-stromatolite']

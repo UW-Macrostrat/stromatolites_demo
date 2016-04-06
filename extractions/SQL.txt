@@ -1,0 +1,31 @@
+#==============================================================================
+# PG DUMP FOR RESULTS
+#==============================================================================
+
+pg_dump -t results -t strat_target -t strat_target_distant -t age_check -t bib -t target_adjectives DBNAME > ./output/output.sql
+
+#==============================================================================
+# CREATE (ALREADY PRESENT) DATABASE FROM DUMP
+#==============================================================================
+
+psql -d DBNAME -f ../output/output.sql
+
+#==============================================================================
+# USEFUL SQL QUERIES FOR SUMMARY RESULTS
+#==============================================================================
+
+COPY(SELECT strat_phrase_root,strat_name_id, COUNT(strat_name_id)
+	FROM results 
+	WHERE (strat_name_id<>'0' AND target_word ILIKE '%stromato%') 
+	GROUP BY strat_phrase_root, strat_name_id)
+	TO '/Users/jhusson/Box Sync/postdoc/deepdive/stroms/V2/test.csv' DELIMITER ',' CSV HEADER;
+
+#==============================================================================
+# INTERESTING STROMATOLITE ADJECTIVES
+#==============================================================================
+
+SELECT * from target_adjectives WHERE target_adjective ILIKE 'domal' OR
+target_adjective ILIKE 'columnar' OR
+target_adjective ILIKE 'conical' OR
+target_adjective ILIKE 'domical' OR
+target_adjective ILIKE 'domed'
