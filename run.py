@@ -21,7 +21,7 @@ with open('./credentials', 'r') as credential_yaml:
     
     
 #ensure working directory is proper
-os.chdir("/Users/jhusson/local/bin/deepdive-0.7.1/deepdive-apps/stromatolites")
+#os.chdir("/Users/jhusson/local/bin/deepdive-0.7.1/deepdive-apps/stromatolites")
 
 #INITALIZE THE POSTGRES TABLES
 print 'Step 1: Initialize the PSQL tables ...'
