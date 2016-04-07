@@ -23,46 +23,46 @@ with open('./credentials', 'r') as credential_yaml:
 #ensure working directory is proper
 #os.chdir("/Users/jhusson/local/bin/deepdive-0.7.1/deepdive-apps/stromatolites")
 
-#INITALIZE THE POSTGRES TABLES
-print 'Step 1: Initialize the PSQL tables ...'
-subprocess.call('./setup/setup.sh', shell=True)
-os.system('python ./udf/initdb.py')
-
-#BUILD THE BIBLIOGRAPHY
-print 'Step 2: Build the bibliography ...'
-os.system('python ./udf/buildbib.py')
-
-#FIND TARGET INSTANCES
-print 'Step 3: Find stromatolite instances ...'
-os.system('python ./udf/ext_target.py')
-
-#FIND STRATIGRAPHIC ENTITIES
-print 'Step 4: Find stratigraphic entities ...'
-os.system('python ./udf/ext_strat_phrases.py')
-
-#FIND STRATIGRAPHIC MENTIONS
-print 'Step 5: Find stratigraphic mentions ...'
-os.system('python ./udf/ext_strat_mentions.py')
-
-#CHECK AGE - UNIT MATCH AGREEMENT
-print 'Step 6: Check age - unit match agreement ...'
-os.system('python ./udf/ext_age_check.py')
-
-#DEFINE RELATIONSHIPS BETWEEN TARGET AND STRATIGRAPHIC NAMES
-print 'Step 7: Define the relationships between stromatolite phrases and stratigraphic entities/mentions ...'
-os.system('python ./udf/ext_strat_target.py')
-
-#DEFINE RELATIONSHIPS BETWEEN TARGET AND DISTANT STRATIGRAPHIC NAMES
-print 'Step 8: Define the relationships between stromatolite phrases and distant stratigraphic entities/mentions ...'
-os.system('python ./udf/ext_strat_target_distant.py')
-
-#BUILD A BEST RESULTS TABLE OF STROM-STRAT_NAME TUPLES
-print 'Step 9: Build a best results table of strom-strat_name tuples ...'
-os.system('python ./udf/ext_results.py')
+##INITALIZE THE POSTGRES TABLES
+#print 'Step 1: Initialize the PSQL tables ...'
+#subprocess.call('./setup/setup.sh', shell=True)
+#os.system('python ./udf/initdb.py')
+#
+##BUILD THE BIBLIOGRAPHY
+#print 'Step 2: Build the bibliography ...'
+#os.system('python ./udf/buildbib.py')
+#
+##FIND TARGET INSTANCES
+#print 'Step 3: Find stromatolite instances ...'
+#os.system('python ./udf/ext_target.py')
+#
+##FIND STRATIGRAPHIC ENTITIES
+#print 'Step 4: Find stratigraphic entities ...'
+#os.system('python ./udf/ext_strat_phrases.py')
+#
+##FIND STRATIGRAPHIC MENTIONS
+#print 'Step 5: Find stratigraphic mentions ...'
+#os.system('python ./udf/ext_strat_mentions.py')
+#
+##CHECK AGE - UNIT MATCH AGREEMENT
+#print 'Step 6: Check age - unit match agreement ...'
+#os.system('python ./udf/ext_age_check.py')
+#
+##DEFINE RELATIONSHIPS BETWEEN TARGET AND STRATIGRAPHIC NAMES
+#print 'Step 7: Define the relationships between stromatolite phrases and stratigraphic entities/mentions ...'
+#os.system('python ./udf/ext_strat_target.py')
+#
+##DEFINE RELATIONSHIPS BETWEEN TARGET AND DISTANT STRATIGRAPHIC NAMES
+#print 'Step 8: Define the relationships between stromatolite phrases and distant stratigraphic entities/mentions ...'
+#os.system('python ./udf/ext_strat_target_distant.py')
+#
+##BUILD A BEST RESULTS TABLE OF STROM-STRAT_NAME TUPLES
+#print 'Step 9: Build a best results table of strom-strat_name tuples ...'
+#os.system('python ./udf/ext_results.py')
 
 #POSTGRES DUMP
 print 'Step 10: Dump select results from PSQL ...'
-output = 'pg_dump -t results -t strat_target -t strat_target_distant -t age_check -t bib -t target_adjectives ' + credentials['postgres']['database'] + ' > ./output/output.sql'
+output = 'pg_dump -U '+ credentials['postgres']['user'] + ' -t results -t strat_target -t strat_target_distant -t age_check -t bib -t target_adjectives -d ' + credentials['postgres']['database'] + ' > ./output/output.sql'
 subprocess.call(output, shell=True)
 
 #summary of performance time
