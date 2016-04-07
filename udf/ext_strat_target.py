@@ -10,6 +10,7 @@
 
 import time, random, psycopg2, yaml
 from tqdm import *
+from psycopg2.extensions import AsIs
 
 #tic
 start_time = time.time()
