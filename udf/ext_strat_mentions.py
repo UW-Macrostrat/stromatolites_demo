@@ -41,6 +41,14 @@ def download_csv( url ):
 #==============================================================================
 # CONNECT TO POSTGRES
 #==============================================================================
+
+# Connect to Postgres
+with open('./credentials', 'r') as credential_yaml:
+    credentials = yaml.load(credential_yaml)
+
+with open('./config', 'r') as config_yaml:
+    config = yaml.load(config_yaml)
+    
 connection = psycopg2.connect(
     dbname=credentials['postgres']['database'],
     user=credentials['postgres']['user'],
