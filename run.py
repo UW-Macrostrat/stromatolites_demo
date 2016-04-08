@@ -62,7 +62,7 @@ os.system('python ./udf/ext_results.py')
 
 #POSTGRES DUMP
 print 'Step 10: Dump select results from PSQL ...'
-output = 'pg_dump -t results -t strat_target -t strat_target_distant -t age_check -t bib -t target_adjectives ' + credentials['postgres']['database'] + ' > ./output/output.sql'
+output = 'pg_dump -U '+ credentials['postgres']['user'] + ' -t results -t strat_target -t strat_target_distant -t age_check -t bib -t target_adjectives -d ' + credentials['postgres']['database'] + ' > ./output/output.sql'
 subprocess.call(output, shell=True)
 
 #summary of performance time
