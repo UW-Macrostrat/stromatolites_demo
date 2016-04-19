@@ -14,4 +14,4 @@ frequency: monthly
 terms: [stromatolite, stromatolitic, thrombolite, thrombolitic]
 
 # Alternatively, a list of dictionaries can be provided in place of a list of terms
-dictionaries: []
+dictionaries: [strom]
