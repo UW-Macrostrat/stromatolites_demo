@@ -58,7 +58,7 @@ for idx,item in enumerate(bib):
     if isinstance(item['journal']['name'],unicode):
         journal=item['journal']['name'].encode('ascii','ignore')
     else:
-        journal=item['journal']
+        journal=item['journal']['name']
 
     if 'author' in item.keys():
         for name in item['author']:
