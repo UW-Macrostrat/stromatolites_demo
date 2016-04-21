@@ -13,5 +13,5 @@ frequency: monthly
 # A list of terms used to subset the corpus
 terms: [stromatolite, stromatolitic, thrombolite, thrombolitic]
 
-# Alternatively, a list of dictionaries can be provided in place of a list of terms
-dictionaries: []
+# Stored dictionary of terms, to be set by GDD infrastructure admins
+dictionary: strom

@@ -36,36 +36,41 @@ with open('./input/bibjson') as fid:
 
 #push docid, authors, title, journal name and url to PostGRES
 for idx,item in enumerate(bib):
-    
+
     #initialize the variables to push to psql
     docid=[]
     title=[]
     journal=[]
-    names=[]    
+    names=[]
     url =[]
 
     #as failsafe, always check if each variable exists
     if isinstance(item['id'],unicode):
-        docid=item['id'].encode('ascii','ignore')  
-    
+        docid=item['id'].encode('ascii','ignore')
+    else:
+        docid=item['id']
+
     if isinstance(item['title'],unicode):
         title=item['title'].encode('ascii','ignore')
-        
+    else:
+        title=item['title']
+
     if isinstance(item['journal']['name'],unicode):
         journal=item['journal']['name'].encode('ascii','ignore')
-    
-    if 'author' in item.keys():    
+    else:
+        journal=item['journal']['name']
+
+    if 'author' in item.keys():
         for name in item['author']:
             names.append(name['name'].encode('ascii','ignore'))
-    
+
     if 'link' in item.keys():
         url=item['link'][0]['url']
-        
+
         for link in item['link']:
             if link['type']=='sciencedirect':
                 url=link['url']
-        
-    
+
     #psql table insertion
     cursor.execute("""
             INSERT INTO bib (         docid,
@@ -83,15 +88,15 @@ connection.commit()
 cursor.execute("""  WITH  query AS(SELECT journal, COUNT(journal)
                                   FROM bib
                                   GROUP BY journal)
-                            
+
                     UPDATE bib
                         SET journal_instances = query.count
                         FROM query
                         WHERE bib.journal = query.journal
 
 """)
-connection.commit() 
+connection.commit()
 
-#close the connection  
+#close the connection
 connection.close()
 
