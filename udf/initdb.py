@@ -173,11 +173,14 @@ cursor.execute("""
     DROP TABLE IF EXISTS results CASCADE;
     CREATE TABLE results(
         target_id int,
+        docid text,
+        sentid int,
         target_word text,
         strat_phrase_root text,
         strat_name_id  text,
         age_sum text,
-        source text
+        source text,
+        phrase text
         );
 """)
 connection.commit()

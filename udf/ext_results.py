@@ -28,14 +28,18 @@ cursor.execute("""
     DELETE FROM results;
 """)
 
+cursor.execute("""
+    DROP TABLE IF EXISTS results_new;
+""")
+
 #push drop/create to the database
 connection.commit()
 
 #gather results from the same-sentence inferences
 cursor.execute(""" 
-    INSERT INTO results (target_id, target_word, strat_phrase_root,strat_name_id, age_sum) 
+    INSERT INTO results (target_id, docid, sentid, target_word, strat_phrase_root,strat_name_id, age_sum, phrase) 
 
-		(SELECT target_id, target_word, strat_phrase_root,strat_name_id, age_sum
+		(SELECT target_id, docid, sentid,  target_word, strat_phrase_root,strat_name_id, age_sum, sentence
 				FROM strat_target 
 				WHERE ((num_phrase=1 AND @(target_distance)<51) 
 				OR   (target_relation='parent' AND num_phrase <8 AND @(target_distance)<51)
@@ -56,9 +60,9 @@ connection.commit()
 
 #gather results from the near-sentence inferences
 cursor.execute(""" 
-    INSERT INTO results (target_id, target_word, strat_phrase_root,strat_name_id, age_sum) 
+    INSERT INTO results (target_id, docid, sentid, target_word, strat_phrase_root,strat_name_id, age_sum, phrase) 
 
-		(SELECT target_id, target_word, strat_phrase_root,strat_name_id, age_sum
+		(SELECT target_id, docid, sentid,  target_word, strat_phrase_root,strat_name_id, age_sum, words_between
 				FROM strat_target_distant 
 				WHERE num_phrase=1)"""
 )
@@ -71,6 +75,23 @@ cursor.execute("""
     UPDATE results SET source='out_sent' WHERE source IS NULL 
    """
 )
+
+#remove non-unique rows
+cursor.execute("""
+    CREATE TABLE results_new AS (SELECT DISTINCT * FROM results)
+   """
+)
+
+cursor.execute("""
+    DROP TABLE results
+   """
+)
+
+cursor.execute("""
+    ALTER TABLE results_new RENAME TO results;
+   """
+)
+
 
 #push update
 connection.commit()
