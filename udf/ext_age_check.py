@@ -9,7 +9,6 @@
 #==============================================================================
 
 import time, random, psycopg2, urllib2, csv, yaml
-from tqdm import *
 
 #tic
 start_time = time.time()
@@ -106,7 +105,7 @@ nay=0
 int_check=[]
 
 #loop through all unique strat_name ids to check extracted age - unit link congruency
-for idx, name in enumerate(tqdm(strat_name_ids, desc='checking ages ...')):
+for idx, name in enumerate(strat_name_ids):
     
     #find all strat_name_list - interval tuples to be checked
     name_check = [j for j in int_list if j[2]==name]

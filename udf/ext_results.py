@@ -2,10 +2,6 @@
 #GENERATE RESULTS TABLE
 #==============================================================================
 
-#path: /Users/jhusson/local/bin/deepdive-0.7.1/deepdive-apps/stromatolites/udf
-
-#==============================================================================
-
 import psycopg2, yaml
 
 # Connect to Postgres
@@ -38,7 +34,6 @@ connection.commit()
 #gather results from the same-sentence inferences
 cursor.execute(""" 
     INSERT INTO results (target_id, docid, sentid, target_word, strat_phrase_root,strat_name_id, age_sum, phrase) 
-
 		(SELECT target_id, docid, sentid,  target_word, strat_phrase_root,strat_name_id, age_sum, sentence
 				FROM strat_target 
 				WHERE ((num_phrase=1 AND @(target_distance)<51) 
@@ -61,7 +56,6 @@ connection.commit()
 #gather results from the near-sentence inferences
 cursor.execute(""" 
     INSERT INTO results (target_id, docid, sentid, target_word, strat_phrase_root,strat_name_id, age_sum, phrase) 
-
 		(SELECT target_id, docid, sentid,  target_word, strat_phrase_root,strat_name_id, age_sum, words_between
 				FROM strat_target_distant 
 				WHERE num_phrase=1)"""

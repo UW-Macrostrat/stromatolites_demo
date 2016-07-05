@@ -8,7 +8,6 @@
 # import relevant modules and data
 #==============================================================================
 import time, random, re, yaml, psycopg2
-from tqdm import *
 from psycopg2.extensions import AsIs
 
 start_time = time.time()
@@ -69,7 +68,7 @@ connection.commit()
 
 
 adj=[]
-for idx,line in enumerate(tqdm(target)):
+for idx,line in enumerate(target):
     docid, sentid, target_id, target_word, target_children = line
     target_children = eval(target_children)
     target_children =target_children[0]

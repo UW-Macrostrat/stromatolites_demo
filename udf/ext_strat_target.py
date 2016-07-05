@@ -9,7 +9,6 @@
 #==============================================================================
 
 import time, random, psycopg2, yaml
-from tqdm import *
 from psycopg2.extensions import AsIs
 
 #tic
@@ -97,7 +96,7 @@ target_instances = [list(elem) for elem in target_instances]
 strat_target_list=[]
 
 #loop through all sentences with strat entities/mentions
-for idx, line in enumerate(tqdm(strat_list, desc='describing in-sentence relationships ')):
+for idx, line in enumerate(strat_list):
     doc_id, sent_id, strat_phrase_root, strat_flag,strat_name_id,phrase_start,phrase_end,int_name,num_phrase,sentence,age_agree = line
     
     #grab the target instances for that same sentence    
@@ -215,7 +214,7 @@ results=cursor.fetchall()
 results = [list(elem) for elem in results]
 
 #loop through all strat_name_ids and summarize age agreement discoveries
-for idx,name in enumerate(tqdm(tocheck, desc='providing age-agreement summaries ')):
+for idx,name in enumerate(tocheck):
     tmp = [i for i in results if i[0]==name[0]]        
     ids = name[0].split('~')
 

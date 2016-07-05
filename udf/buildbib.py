@@ -58,7 +58,7 @@ for idx,item in enumerate(bib):
     if isinstance(item['journal']['name'],unicode):
         journal=item['journal']['name'].encode('ascii','ignore')
     else:
-        journal=item['journal']['name']
+        journal=item['journal']
 
     if 'author' in item.keys():
         for name in item['author']:
@@ -70,6 +70,7 @@ for idx,item in enumerate(bib):
         for link in item['link']:
             if link['type']=='sciencedirect':
                 url=link['url']
+
 
     #psql table insertion
     cursor.execute("""

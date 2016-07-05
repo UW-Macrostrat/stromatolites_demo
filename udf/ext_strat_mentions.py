@@ -8,7 +8,6 @@
 # ACQUIRE RELEVANT MODULES
 #==============================================================================
 import time, urllib2, csv, random, psycopg2, re, yaml
-from tqdm import *
 from psycopg2.extensions import AsIs
 
 #tic
@@ -111,7 +110,7 @@ for i in strat_variables:
     exec i
 
 #PRE-PROCESS: hack to replace weird strings
-for idx,line in enumerate(tqdm(sentences,desc='zapping bad strings')):
+for idx,line in enumerate(sentences):
     for ws in weird_strings:
         if ws[0] in ' '.join(sentences[idx][2]):
             sentences[idx][2]=[word.replace(ws[0],ws[1]) for word in sentences[idx][2]] 
@@ -125,7 +124,7 @@ age_agree='-'
 strat_list=[]
 
 #loop through documents with discoverd stratigraphic entities
-for idx1,doc in enumerate(tqdm(doc_list.keys(),desc='looking for stratigraphic mentions')):
+for idx1,doc in enumerate(doc_list.keys()):
     #list of sentences data from a given document
     target_sents = [k for k in sentences if k[0]==doc]
     #list of stratigraphic names associated with that document
