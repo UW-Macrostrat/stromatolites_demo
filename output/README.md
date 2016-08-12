@@ -1,1 +1,1 @@
-[Latest results](http://deepdive1.chtc.wisc.edu/runs/stromatolites_0d67e8cb19c91cda702ade9e92718a6d1999686f_01h49_05Aug16.zip)
+[Latest results](http://deepdive1.chtc.wisc.edu/runs/stromatolites_e2136697c59e0cb2f3ffe764d7b3738f2c7c4c8e_08h42_12Aug16.zip)
