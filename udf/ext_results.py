@@ -163,3 +163,7 @@ for line in cursor_main:
         
 #push update
 connection.commit()
+
+#close the postgres connection
+connection.close()
+
