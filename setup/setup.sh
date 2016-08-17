@@ -32,6 +32,9 @@ echo "COPY ${app_name}_sentences_nlp FROM '$pwd/input/sentences_nlp'" | psql -U 
 # NLP352
 echo "DROP TABLE IF EXISTS ${app_name}_sentences_nlp352; CREATE TABLE ${app_name}_sentences_nlp352 (docid text, sentid integer, wordidx integer[], words text[], poses text[], ners text[], lemmas text[], dep_paths text[], dep_parents integer[]);" | psql -U $postgres__user -h $postgres__host -p $postgres__port $postgres__database
 
+echo "CREATE INDEX ON ${app_name}_sentences_nlp352 (docid);" | psql -U $postgres__user -h $postgres__host -p $postgres__port $postgres__database
+echo "CREATE INDEX ON ${app_name}_sentences_nlp352 (sentid);" | psql -U $postgres__user -h $postgres__host -p $postgres__port $postgres__database
+
 echo "COPY ${app_name}_sentences_nlp352 FROM '$pwd/input/sentences_nlp352'" | psql -U $postgres__user -h $postgres__host -p $postgres__port $postgres__database
 
 # NLP352 Bazaar
