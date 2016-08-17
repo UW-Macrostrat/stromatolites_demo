@@ -97,6 +97,8 @@ cursor.execute("""
     CREATE TABLE strat_target(
         docid text,
         sentid int,
+        refs_loc int,
+        in_ref text DEFAULT 'no',
         strat_phrase_root text,
         num_phrase int,
         target_relation text,
@@ -136,6 +138,8 @@ cursor.execute("""
     CREATE TABLE strat_target_distant(
         docid text,
         sentid int,
+        refs_loc int,
+        in_ref text DEFAULT 'no',
         strat_phrase_root text,
         strat_flag text,
         num_phrase int,
