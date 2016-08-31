@@ -81,6 +81,13 @@ doc_cursor.execute("""
     "my_product": AsIs(config['product'].lower())
 })
 
+
+#initalize the strat_target_distant relationship table
+cursor.execute("""
+    DELETE FROM strat_target_distant;
+""")
+connection.commit()
+
 #loop through document list
 for idx,doc in enumerate(doc_cursor):    
     #orphaned targets from a given document
@@ -161,7 +168,8 @@ for idx,doc in enumerate(doc_cursor):
             sent_cursor.execute(""" 
                         SELECT docid, sentid, words from %(my_app)s_sentences_%(my_product)s
                             WHERE docid=%(my_docid)s
-                            AND   sentid=ANY(%(my_sentid)s);""",
+                            AND   sentid=ANY(%(my_sentid)s)
+                            ORDER BY sentid ASC;""",
                             {
                               "my_app": AsIs(config['app_name']),
                               "my_product": AsIs(config['product'].lower()),
