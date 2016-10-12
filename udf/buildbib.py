@@ -45,10 +45,10 @@ for idx,item in enumerate(bib):
     url =[]
 
     #as failsafe, always check if each variable exists
-    if isinstance(item['id'],unicode):
-        docid=item['id'].encode('ascii','ignore')
+    if isinstance(item['_gddid'],unicode):
+        docid=item['_gddid'].encode('ascii','ignore')
     else:
-        docid=item['id']
+        docid=item['_gddid']
 
     if isinstance(item['title'],unicode):
         title=item['title'].encode('ascii','ignore')
