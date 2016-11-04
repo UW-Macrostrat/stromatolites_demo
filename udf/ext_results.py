@@ -2,7 +2,7 @@
 #GENERATE RESULTS TABLE
 #==============================================================================
 
-import time, random, re, yaml, psycopg2, copy
+import time, random, re, yaml, psycopg2, copy, csv
 from psycopg2.extensions import AsIs
 
 start_time = time.time()
@@ -163,6 +163,24 @@ for line in cursor_main:
         
 #push update
 connection.commit()
+
+#write culled results to CSV
+cursor.execute("""
+         SELECT result_id,docid,sentid,target_word,strat_phrase_root,strat_flag,strat_name_id,in_ref,source,phrase
+        	FROM results 
+        	WHERE (is_strat_name='yes' AND source='in_sent')
+           OR (is_strat_name='yes' AND source='out_sent' AND in_ref='no')
+     """)
+     
+results=cursor.fetchall()
+
+with open('./output/results.csv', 'a') as outcsv:   
+    #configure writer to write standard csv file
+    writer = csv.writer(outcsv, delimiter=',', quoting=csv.QUOTE_ALL, lineterminator='\n')
+    writer.writerow(['result_id','docid','sentid','target_word','strat_phrase_root','strat_flag','strat_name_id','in_ref','source','phrase'])
+    for item in results:
+        #Write item to outcsv
+        writer.writerow([item[0], item[1], item[2],item[3], item[4], item[5],item[6], item[7], item[8], item[9]])
 
 #close the postgres connection
 connection.close()

@@ -2,10 +2,6 @@
 #RUN ALL  - STROMATOLITES
 #==============================================================================
 
-#path: /Users/jhusson/local/bin/deepdive-0.7.1/deepdive-apps/stromatolites
-
-#==============================================================================
-
 import os, time, subprocess, yaml
 
 #tic
@@ -18,10 +14,6 @@ with open('./config', 'r') as config_yaml:
 #load credentials file
 with open('./credentials', 'r') as credential_yaml:
     credentials = yaml.load(credential_yaml)
-    
-    
-#ensure working directory is proper
-#os.chdir("/Users/jhusson/local/bin/deepdive-0.7.1/deepdive-apps/stromatolites")
 
 #INITALIZE THE POSTGRES TABLES
 print 'Step 1: Initialize the PSQL tables ...'
@@ -56,7 +48,7 @@ os.system('python ./udf/ext_strat_target.py')
 print 'Step 8: Define the relationships between stromatolite phrases and distant stratigraphic entities/mentions ...'
 os.system('python ./udf/ext_strat_target_distant.py')
 
-#DEFINE RELATIONSHIPS BETWEEN TARGET AND DISTANT STRATIGRAPHIC NAMES
+#FIND BEGINNING OF REFERENCE LIST
 print 'Step 9: Delineate reference section from main body extractions ...'
 os.system('python ./udf/ext_references.py')
 
@@ -68,10 +60,6 @@ os.system('python ./udf/ext_results.py')
 print 'Step 11: Find adjectives describing strom target words ...'
 os.system('python ./udf/ext_target_adjective.py')
 
-#POSTGRES DUMP
-print 'Step 12: Dump select results from PSQL ...'
-output = 'pg_dump -U '+ credentials['postgres']['user'] + ' -t results -t strat_target -t strat_target_distant -t age_check -t refs_location -t bib -t target_adjectives -d ' + credentials['postgres']['database'] + ' > ./output/output.sql'
-subprocess.call(output, shell=True)
 
 #summary of performance time
 elapsed_time = time.time() - start_time
