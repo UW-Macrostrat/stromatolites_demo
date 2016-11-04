@@ -1,0 +1,46 @@
+sentences_nlp
+------------
+Version info: Stanford Core NLP 1.3.5, http://nlp.stanford.edu/software/corenlp.shtml
+Format: TSV
+Information: 
+    An older version of the natural language processing output from the Stanford NLP package (http://nlp.stanford.edu/software/corenlp.shtml)
+    It has been parsed into a TSV file, ready for input into a SQL database for usage in a DeepDive application (http://deepdive.stanford.edu)
+    Column structure:
+        docid (text) -- document's unique ID within our internal database
+        sentid (integer) -- sentence's index within the document
+        wordidx (integer[]) -- Word's index within the sentences
+        word (text[]) -- Word
+        poses (text[]) -- Parts of speech
+        ners (text[]) -- Named entity recognizer
+        lemmas (text[]) -- base or dictionary form of word
+        dep_paths (text[]) -- Dependency type
+        dep_parents (integer[]) -- Word index of the dependency parent
+        font (text[]) -- Special font
+        layout (text[]) -- Layout notes
+        
+Usage:
+    psql -d database -c "CREATE TABLE sentences (docid text, sentid integer, wordidx integer[], words text[], poses text[], ners text[], lemmas text[], dep_paths text[], dep_parents integer[]);"
+    cat sentences_nlp | psql -d database -c "COPY sentences FROM STDIN"
+
+sentences_nlp352
+------
+Version info: Stanford Core NLP 3.5.2, http://nlp.stanford.edu/software/corenlp.shtml
+Format: TSV
+Information:
+    Column structure:
+        docid (text) -- document's unique ID within our internal database
+        sentid (integer) -- sentence's index within the document
+        wordidx (integer[]) -- Word's index within the sentences
+        word (text[]) -- Word
+        poses (text[]) -- Parts of speech
+        ners (text[]) -- Named entity recognizer
+        lemmas (text[]) -- base or dictionary form of word
+        dep_paths (text[]) -- Dependency type
+        dep_parents (integer[]) -- Word index of the dependency parent
+        (font) (text[]) -- Special font
+        (layout) (text[]) -- Layout notes
+Usage:
+    psql -d database -c "CREATE TABLE sentences (docid text, sentid integer, wordidx integer[], words text[], poses text[], ners text[], lemmas text[], dep_paths text[], dep_parents integer[]);"
+    cat sentences_nlp352 | psql -d database -c "COPY sentences FROM STDIN"
+
+

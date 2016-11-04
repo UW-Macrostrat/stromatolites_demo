@@ -2,7 +2,7 @@
 app_name: strom
 
 # First and last name of the user
-user: Jon Husson
+user: YOUR NAME
 
 # The NLP product to run the application against
 product: NLP352
