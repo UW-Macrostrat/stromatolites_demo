@@ -1,5 +1,11 @@
-# GeoDeepDive Application Template
-A template for building applications for [GeoDeepDive](https://geodeepdive.org)
+# Stromatolite Application Demonstration
+A demonstration of the [GeoDeepDive](https://geodeepdive.org) text mining application used 
+in Peters, Husson and Wilcots (2016). The goal of this application is to make tuples between
+"stromatolite" fossils and stratigraphic names in order to assess the spatio-temporal distributions
+of stromatolites across Earth history. This repository includes 5 USGS Technical Reports 
+from the GeoDeepDive database - a subset of the 8,425 documents analyzed for the manuscript.
+Running this application will write results to the `output` - a list of stratigraphic names,
+with links to the [Macrostrat](https://macrostrat.org) database if any were found.
 
 ## Getting started
 Dependencies:
@@ -29,8 +35,8 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 First, clone this repository and run the setup script:
 
 ````
-git clone https://github.com/UW-DeepDiveInfrastructure/app-template
-cd app-template
+git clone https://github.com/UW-Macrostrat/stromatolites
+cd stromatolites
 make
 ````
 
