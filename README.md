@@ -70,18 +70,22 @@ List of Python dependencies to be installed by `pip`
 Python script that runs the entire application, including any setup tasks and exporting of results to the folder `/output`.
 
 ## Results Summary
-Field | Description 
+Column | Description 
 -------|--------
-result\_id|
-docid|
-sentid|
-target\_word|
-strat\_phrase\_root|
-strat\_flag|
-strat\_name\_id|
-in\_ref|
-source|
-phrase|
+result\_id| identifier for "stromatolite-stratigraphic name" result tuple from the results table
+docid| identifier for document with the GeoDeepDive database (i.e., [558dcf01e13823109f3edf8e](https://geodeepdive.org/api/articles?id=558dcf01e13823109f3edf8e))
+sentid| identifier for sentence within the document where the tuple was extracted
+target\_word| "stromatolite" word
+strat\_phrase\_root| unique portion of the identified stratigraphic name inferred to contained stromatolites (i.e., "Wood Canyon" fron the "Wood Canyon Formation")
+strat\_flag| word that signified to the `strat\_name` extractor that a phrase was a stratigraphic phrase (i.e., "Formation"). 
+Note that this field could be "mention" for informal usage once a name has been formally defined in the same document (i.e. "Wood Canyon stromatolites").
+strat\_name\_id| identifier for the extracted name linked to the Macrostrat database. For example, [this api call](https://macrostrat.org/api/defs/strat_names?strat_name_id=2330) 
+retrieves the definition for the "Wood Canyon Formation" from the Macrostrat database. [This api call](https://macrostrat.org/api/units?strat_name_id=2330) retrieves all
+lithostratigraphic units linked to the "Wood Canyon Formation" from the Macrostrat database. Note that this field could be "0" if no link to Macrostrat is discovered. If a
+name is linked to multiple stratigraphic names in the Macrostrat database, each identifier is separated by a ~ (i.e. "61671~446~2442").
+in\_ref| application determination if the extracted tuple came from the reference list.
+source| classifier indicating whether the extraction was from the same sentence ("in\_sent") and from a nearby sentence ("out\_sent").
+phrase| full phrase that discusses the stratigraphic phrase and stromatolite fossil(s).
 
 ## License
 CC-BY 4.0 International
