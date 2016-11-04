@@ -1,6 +1,5 @@
 .DS_Store
 
-credentials
 *.swp
 full_input/
 output/results.csv
