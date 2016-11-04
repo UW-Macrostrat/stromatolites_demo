@@ -2,10 +2,11 @@
 A demonstration of the [GeoDeepDive](https://geodeepdive.org) text mining application used 
 in Peters, Husson and Wilcots (2016). The goal of this application is to make tuples between
 stromatolite fossils and stratigraphic names in order to assess the spatio-temporal distribution
-of stromatolites across Earth history. This repository includes 5 USGS Technical Reports 
-from the GeoDeepDive database - a subset of the 8,425 documents analyzed for the manuscript.
-Running this application will write results to the `output` - a list of stratigraphic names,
-with links to the [Macrostrat](https://macrostrat.org) database if any were found.
+of stromatolites across Earth history. This application uses a combination of Python and 
+PostgreSQL, and is the same as used to generate the results for the manuscript. We also 
+include 5 USGS Technical Reports from the GeoDeepDive database - a subset of the 8,425 
+documents analyzed for the manuscript - to serve as a demonstration of how the application
+operates.
 
 ## Getting started
 Dependencies:
@@ -48,7 +49,8 @@ To create a database with the data included in `/setup/usgs_example`:
 make local_setup
 ````
 
-To run an example, run `python run.py`. Results are written to the `output` folder.
+To run an example, run `python run.py`. Results are written to the `output` folder to the 
+file `results.csv`. Please see `Results Summary` for a description of the fields returned.
 
 ## File Summary
 
@@ -67,6 +69,19 @@ List of Python dependencies to be installed by `pip`
 #### run.py
 Python script that runs the entire application, including any setup tasks and exporting of results to the folder `/output`.
 
+## Results Summary
+Field | Description 
+-------|--------
+result\_id|
+docid|
+sentid|
+target\_word|
+strat\_phrase\_root|
+strat\_flag|
+strat\_name\_id|
+in\_ref|
+source|
+phrase|
 
 ## License
 CC-BY 4.0 International
