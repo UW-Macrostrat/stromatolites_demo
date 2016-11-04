@@ -1,7 +1,7 @@
 # Stromatolite Application Demonstration
 A demonstration of the [GeoDeepDive](https://geodeepdive.org) text mining application used 
 in Peters, Husson and Wilcots (2016). The goal of this application is to make tuples between
-"stromatolite" fossils and stratigraphic names in order to assess the spatio-temporal distributions
+stromatolite fossils and stratigraphic names in order to assess the spatio-temporal distribution
 of stromatolites across Earth history. This repository includes 5 USGS Technical Reports 
 from the GeoDeepDive database - a subset of the 8,425 documents analyzed for the manuscript.
 Running this application will write results to the `output` - a list of stratigraphic names,
@@ -40,7 +40,7 @@ cd stromatolites
 make
 ````
 
-Edit `credentials` with the connection credentials for your local Postgres database.
+Edit `credentials` with your username for your local Postgres database.
 
 To create a database with the data included in `/setup/usgs_example`:
 
@@ -48,32 +48,7 @@ To create a database with the data included in `/setup/usgs_example`:
 make local_setup
 ````
 
-To run an example, run `python run.py`.
-
-## Running on GeoDeepDive Infrastructure
-All applications are required to have the same structure as this repository, namely an empty folder named `output`, a valid
-`config` file, an updated `requirements.txt` describing any Python dependencies, and `run.py` which runs the application
-and outputs results. The `credentials` file will be ignored and substituted with a unique version at run time.
-
-The GeoDeepDive infrastructure will have the following software available:
-  + Python 2.7+ (Python 3.x not supported at this time)
-  + PostgreSQL 9.4+, including command line tools and PostGIS
-
-#### Submitting a config file
-The `config` file outlines a list of terms OR dictionaries that you are interested in culling from the corpus. Once you have
-updated this file, a private repository will be set up for you under the UW-DeepDiveInfrastructure Github group for you to
-push the code from this repository to. Your `config` file will be used to generate a custom testing subset of documents that
-you can use to develop your application.
-
-#### Running the application
-Once you have developed your application and tested it against the corpus subset, simply push your application to the
-private repository created in the previous step. The application will then be run according to the parameters set in the
-`config` file.
-
-#### Getting results
-After the application is run, the contents of the `output` folder will be gzipped and be made available to download. If
-an error was encountered or your application did not run successfully any errors thrown will be logged into the file
-`errors.txt` which is included in the gzipped results package.
+To run an example, run `python run.py`. Results are written to the `output` folder.
 
 ## File Summary
 
