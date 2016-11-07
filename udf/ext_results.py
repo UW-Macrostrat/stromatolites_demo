@@ -174,7 +174,7 @@ cursor.execute("""
      
 results=cursor.fetchall()
 
-with open('./output/results.csv', 'a') as outcsv:   
+with open('./output/results.csv', 'w') as outcsv:   
     #configure writer to write standard csv file
     writer = csv.writer(outcsv, delimiter=',', quoting=csv.QUOTE_ALL, lineterminator='\n')
     writer.writerow(['result_id','docid','sentid','target_word','strat_phrase_root','strat_flag','strat_name_id','in_ref','source','phrase'])

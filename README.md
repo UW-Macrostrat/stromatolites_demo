@@ -43,13 +43,19 @@ make
 
 Edit `credentials` with your username for your local Postgres database.
 
-To create a database with the data included in `/setup/usgs_example`:
+To create the database needed to run this demonstration, type:
 
 ````
 make local_setup
 ````
 
-To run an example, run `python run.py`. Results are written to the `output` folder to the 
+To run the demonstration, type:
+
+````
+python run.py
+````
+
+Results are written to the `output` folder to the 
 file `results.csv`. Please see `Results Summary` for a description of the fields returned.
 
 ## File Summary
