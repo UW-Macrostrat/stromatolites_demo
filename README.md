@@ -86,7 +86,7 @@ strat\_flag| word that signified to the `strat_name` extractor ([ext_strat_phras
 strat\_name\_id| stratigraphic name id for the Macrostrat database. For example, [this api call](https://macrostrat.org/api/defs/strat_names?strat_name_id=2330) retrieves the definition for the "Wood Canyon Formation" from the Macrostrat database. [This api call](https://macrostrat.org/api/units?strat_name_id=2330) retrieves all lithostratigraphic units linked to the "Wood Canyon Formation" from the Macrostrat database. Note that this field could be "0" if the stratigraphic name describes a rock body outside of Macrostrat's areal coverage. If a name is linked to multiple stratigraphic names in the Macrostrat database, each identifier is separated by a "~" (i.e. "61671~446~2442").
 in\_ref| application determination ([ext_strat_phrase.py](https://github.com/UW-Macrostrat/stromatolites/blob/master/udf/ext_references.py)) if the extracted tuple came from the reference list.
 source| classifier indicating whether the extraction was from the same sentence ("in\_sent") and from a nearby sentence ("out\_sent").
-phrase| full phrase that serves as basis that the stratigraphic phrase contains stromatolite fossils.
+phrase| full phrase that serves as basis for the determination that the stratigraphic phrase contains stromatolite fossils.
 
 ## License
 CC-BY 4.0 International
