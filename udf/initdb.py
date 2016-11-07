@@ -2,9 +2,6 @@
 #INITIALIZE POSTGRES TABLES
 #==============================================================================
 
-#path: /Users/jhusson/local/bin/deepdive-0.7.1/deepdive-apps/stromatolites/udf
-
-#==============================================================================
 
 import yaml
 import psycopg2

@@ -2,10 +2,6 @@
 #BUILD A BASIC BIBLIOGRAPHY
 #==============================================================================
 
-#path: /Users/jhusson/local/bin/deepdive-0.7.1/deepdive-apps/stromatolites/udf
-
-#==============================================================================
-
 import json,psycopg2, yaml
 
 # Connect to Postgres

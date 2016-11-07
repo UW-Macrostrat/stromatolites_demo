@@ -2,9 +2,6 @@
 ## LOOK FOR STRATIGRAPHIC NOMENCLATURE  - MENTION RECOGINITION
 ##==============================================================================
 
-#path: /Users/jhusson/local/bin/deepdive-0.7.1/deepdive-apps/stromatolites/udf
-
-#==============================================================================
 # ACQUIRE RELEVANT MODULES
 #==============================================================================
 import time, urllib2, csv, random, psycopg2, re, yaml

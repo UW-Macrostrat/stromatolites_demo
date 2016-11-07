@@ -2,9 +2,6 @@
 #DEFINE RELATIONSHIP BETWEEN TARGET ENTITIES AND STRATIGRAPHIC PHRASES
 #==============================================================================
 
-#path: /Users/jhusson/local/bin/deepdive-0.7.1/deepdive-apps/stromatolites/udf
-
-#==============================================================================
 # ACQUIRE RELEVANT MODULES and DATA
 #==============================================================================
 

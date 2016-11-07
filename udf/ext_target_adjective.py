@@ -2,9 +2,6 @@
 #TARGET ADJECTIVE EXTRACTOR
 #==============================================================================
 
-#path: /Users/jhusson/local/bin/deepdive-0.7.1/deepdive-apps/stromatolites/udf
-
-#==============================================================================
 # import relevant modules and data
 #==============================================================================
 import time, random, re, yaml, psycopg2

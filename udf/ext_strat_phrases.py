@@ -8,9 +8,6 @@
 # MENTION MAPPIG DONE ON SENTENCES WITH A TARGET INSTANCE
 #==============================================================================
 
-#path: /Users/jhusson/local/bin/deepdive-0.7.1/deepdive-apps/stromatolites/udf
-
-#==============================================================================
 # ACQUIRE RELEVANT MODULES
 #==============================================================================
 import time, urllib2, csv, random, psycopg2, re, string, yaml

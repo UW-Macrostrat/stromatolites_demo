@@ -2,9 +2,6 @@
 #CHECKING AGE AGREEMENT BETWEEN DISCOVERED AND MATCHED STRATIGRAPHIC PHRASE
 #==============================================================================
 
-#path: /Users/jhusson/local/bin/deepdive-0.7.1/deepdive-apps/stromatolites/udf
-
-#==============================================================================
 # ACQUIRE RELEVANT MODULES and DATA
 #==============================================================================
 
