@@ -36,8 +36,8 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 First, clone this repository and run the setup script:
 
 ````
-git clone https://github.com/UW-Macrostrat/stromatolites
-cd stromatolites
+git clone https://github.com/UW-Macrostrat/stromatolites_demo
+cd stromatolites_demo
 make
 ````
 
