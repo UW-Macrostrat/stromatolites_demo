@@ -40,6 +40,7 @@ git clone https://github.com/UW-Macrostrat/stromatolites_demo
 cd stromatolites_demo
 make
 ````
+Note that it is likely that you may have to issue a sudo with the make command above.
 
 Edit `credentials` with your username for your local Postgres database.
 
