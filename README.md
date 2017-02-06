@@ -59,6 +59,14 @@ python run.py
 Results are written to the `output` folder to the 
 file `results.csv`. Please see `Results Summary` for a description of the fields returned.
 
+NOTE: if `run.py` fails to run properly or does not produce results, one likely culprit is the `Python` dependencies did not install correctly, perhaps because of multiple installations of Python on your local machine. A way to fix this is to run:
+
+````
+python -m pip install <pkg>
+````
+for the offending packages. A good guess is that its failing to install the `stop-words` package, as the other Python dependencies are fairly common.
+
+
 ## File Summary
 
 #### config
