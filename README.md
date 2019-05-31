@@ -1,7 +1,6 @@
 # Stromatolite Application Demonstration
 We present a demonstration of the [GeoDeepDive](https://geodeepdive.org) text mining application used 
-in Peters, Husson and Wilcots (in press, Geology). The goal of this application is to make tuples between
-stromatolite fossils and stratigraphic names in order to assess the spatio-temporal distribution
+in Peters, Husson and Wilcots [2017, Geology](http://doi.org/10.1130/G38931.1). The goal of this application is to identify tuples between stromatolite fossils and stratigraphic names in order to assess the spatio-temporal distribution
 of stromatolites across Earth history. This application uses a combination of Python and 
 PostgreSQL, and is the same as used to generate the results for the published manuscript. We also 
 include 5 USGS Technical Reports from the GeoDeepDive database - a subset of the 8,425 
